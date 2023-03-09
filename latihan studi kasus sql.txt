@@ -1,0 +1,15 @@
+1.SELECT produk.kode_produk, produk.nama_produk, produk.harga, supplier.nama FROM produk JOIN supplier ON produk.supplier_id = supplier.id;
+2.SELECT pelanggan.nama, pelanggan.jenis_kelamin, pelanggan.telepon, pelanggan.alamat FROM pelanggan WHERE alamat LIKE '%Bandung%';
+3.SELECT penjualan.tanggal, penjualan.keterangan, pelanggan.nama FROM penjualan JOIN pelanggan on penjualan.pelanggan_id = pelanggan.id;
+4.SELECT penjualan.tanggal, penjualan.keterangan, pelanggan.nama FROM penjualan JOIN pelanggan on penjualan.pelanggan_id = pelanggan.id WHERE MONTH(penjualan.tanggal) = '09' AND YEAR(penjualan.tanggal) = '2021';
+5.SELECT penjualan.id as penjualan_id, penjualan.tanggal, produk.id as produk_id, penjualan_detail.kuantitas, produk.nama_produk FROM penjualan JOIN penjualan_detail ON penjualan_detail.penjualan_id = penjualan.id JOIN produk ON produk.id = penjualan_detail.produk_id;
+6.SELECT penjualan.id as penjualan_id, penjualan.tanggal, produk.id as produk_id, penjualan_detail.kuantitas, produk.nama_produk FROM penjualan JOIN penjualan_detail ON penjualan_detail.penjualan_id = penjualan.id JOIN produk ON produk.id = penjualan_detail.produk_id WHERE MONTH(penjualan.tanggal) = '08' AND YEAR(penjualan.tanggal) = '2021';
+7.SELECT penjualan.tanggal, penjualan.keterangan, pelanggan.nama, penjualan.total, pembayaran.metode FROM penjualan JOIN pelanggan ON penjualan.pelanggan_id = pelanggan.id JOIN pembayaran ON pembayaran.penjualan_id = penjualan.id;
+8.SELECT penjualan.tanggal, penjualan.keterangan, pelanggan.nama, penjualan.total, pembayaran.metode FROM penjualan JOIN pelanggan ON penjualan.pelanggan_id = pelanggan.id JOIN pembayaran ON pembayaran.penjualan_id = penjualan.id WHERE MONTH(penjualan.tanggal) = '09'AND YEAR(penjualan.tanggal) = '2021'
+9.SELECT metode, SUM(total) as total FROM pembayaran GROUP BY metode;
+10.SELECT penjualan.tanggal, SUM(penjualan.total) as total FROM penjualan GROUP BY penjualan.tanggal;
+11.SELECT * FROM penjualan JOIN pembayaran ON pembayaran.penjualan_id = penjualan.id WHERE pembayaran.tanggal_bayar IS NULL;
+12.SELECT *, penjualan.id as penjualan_id FROM pelanggan JOIN penjualan ON penjualan.pelanggan_id = pelanggan.id WHERE penjualan.id is NULL;
+13.SELECT *, penjualan.id as penjualan_id FROM pelanggan JOIN penjualan ON penjualan.pelanggan_id = pelanggan.id;
+14.SELECT * FROM penjualan JOIN pembayaran on pembayaran.penjualan_id = penjualan.id WHERE MONTH(pembayaran.tanggal_bayar) = '08' AND YEAR(pembayaran.tanggal_bayar) = '2021'
+15.SELECT * FROM pelanggan JOIN penjualan ON penjualan.pelanggan_id = pelanggan.id JOIN penjualan_detail ON penjualan_detail.penjualan_id = penjualan.id JOIN produk ON produk.id = penjualan_detail.produk_id JOIN supplier ON supplier.id = produk.supplier_id WHERE supplier.nama = 'Supplier 1';
